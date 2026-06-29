@@ -1,3 +1,4 @@
+import EduFormBlock from './form/EduFormBlock';
 import ExpFormBlock from './form/ExpFormBlock';
 import Input from './form/Input';
 
@@ -20,7 +21,7 @@ export default function Form() {
 
       <div className='education'>
         <h2>Education</h2>
-        {/* Use reusable blocks here */}
+        <EduFormBlock />
       </div>
     </div>
   );
