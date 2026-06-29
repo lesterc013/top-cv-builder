@@ -1,9 +1,20 @@
 export default function Input({ label, id, type }) {
+  const textareaRows = 5;
+  const textareaCols = 30;
+
   return (
     <div className='input-row'>
       <label htmlFor={id}>{label}: </label>
-      {/* Needed to set the autoComplete attribute else there would be a chrome dev tool error about autoComplete not being set. Nothing major though, functionality still works the same */}
-      <input type={type} id={id} name={id} autoComplete='on' />
+      {type === 'textarea' ? (
+        <textarea
+          name={id}
+          id={id}
+          rows={textareaRows}
+          cols={textareaCols}
+        ></textarea>
+      ) : (
+        <input type={type} id={id} name={id} autoComplete='on' />
+      )}
     </div>
   );
 }
