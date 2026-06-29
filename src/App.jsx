@@ -10,7 +10,27 @@ function App() {
     email: 'lester@email.com',
     phone: '93219818',
   });
+  // TODO: Export default experience object so we dont DRY
+  const [experienceData, setExperienceData] = useState([
+    {
+      id: crypto.randomUUID(),
+      company: 'New Company',
+      position: ' New Position',
+      startDate: '2026',
+      endDate: '2026',
+      description: 'New Description',
+    },
+    {
+      id: crypto.randomUUID(),
+      company: 'New Company',
+      position: 'Position',
+      startDate: '2026',
+      endDate: '2026',
+      description: 'Description',
+    },
+  ]);
 
+  // --- PERSONAL DETAILS ---
   function handlePersonalDetailsChanged(e) {
     // Update the corresponding personalDetails object property
     setPersonalDetails({
@@ -19,11 +39,42 @@ function App() {
     });
   }
 
+  // --- EXPERIENCE ---
+  // function handleAddExperience() {
+  //   setExperienceData([
+  //     ...experienceData,
+  //     {
+  //       id: crypto.randomUUID(),
+  //       company: 'New Company',
+  //       position: 'Position',
+  //       startDate: '2026',
+  //       endDate: '2026',
+  //       description: 'Description',
+  //     },
+  //   ]);
+  // }
+
+  function handleExperienceInputChanged(blockId, e) {
+    const updatedExperiences = experienceData.map((expObj) => {
+      if (expObj.id !== blockId) {
+        return expObj;
+      }
+
+      return {
+        ...expObj,
+        [e.target.name]: e.target.value,
+      };
+    });
+    setExperienceData(updatedExperiences);
+  }
+
   return (
     <div className='app'>
       <Form
         personalDetails={personalDetails}
         handlePersonalDetailsChanged={handlePersonalDetailsChanged}
+        experienceData={experienceData}
+        handleExperienceInputChanged={handleExperienceInputChanged}
       />
       <Display />
     </div>

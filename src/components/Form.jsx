@@ -1,11 +1,12 @@
-import EduFormBlock from './form/EduFormBlock';
-import ExpFormBlock from './form/ExpFormBlock';
-import Input from './form/Input';
 import PersonalDetailsBlock from './form/PersonalDetailsBlock';
+import ExpFormBlock from './form/ExpFormBlock';
+import EduFormBlock from './form/EduFormBlock';
 
 export default function Form({
   personalDetails,
   handlePersonalDetailsChanged,
+  experienceData,
+  handleExperienceInputChanged,
 }) {
   return (
     <div className='form'>
@@ -18,7 +19,17 @@ export default function Form({
 
       <div className='experience'>
         <h2>Experience</h2>
-        <ExpFormBlock />
+        {experienceData.map((experienceDataObj) => (
+          <ExpFormBlock
+            key={experienceDataObj.id}
+            experienceDataObj={experienceDataObj}
+            // LEARNING MOMENT: Close over info that the handler should keep - in this case, I provide each handler with the corresponding experienceDataObj.id so that when its called in future they know which experienceDataObj its for.
+            // So now, we have create a single arg wrapper over the original handler from App.jsx that has closed over the id so the downwards onChange that only passes in 1 argument will work.
+            handleExperienceInputChanged={(e) =>
+              handleExperienceInputChanged(experienceDataObj.id, e)
+            }
+          />
+        ))}
       </div>
 
       <div className='education'>

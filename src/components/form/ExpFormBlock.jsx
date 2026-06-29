@@ -1,53 +1,56 @@
 import Input from './Input';
 
-export default function ExpFormBlock({ experienceDataObj }) {
+export default function ExpFormBlock({
+  experienceDataObj,
+  handleExperienceInputChanged,
+}) {
   const blockId = experienceDataObj.id;
 
   return (
-    <div className='exp-form-block' id={experienceDataObj.id}>
+    <div className='exp-form-block' id={blockId}>
       <Input
-        inputRowId={`${blockId}-company`}
         labelDisplay={'Company'}
         inputId={`${blockId}-company`}
+        name={'company'}
         type={'text'}
         value={experienceDataObj.company}
-        // handleValueChanged={}
+        handleValueChanged={handleExperienceInputChanged}
       />
 
       <Input
-        inputRowId={`${blockId}-position`}
         labelDisplay={'Position'}
         inputId={`${blockId}-position`}
+        name={'position'}
         type={'text'}
         value={experienceDataObj.position}
-        // handleValueChanged={}
+        handleValueChanged={handleExperienceInputChanged}
       />
 
       <Input
-        inputRowId={`${blockId}-startDate`}
         labelDisplay={'Start Date'}
         inputId={`${blockId}-startDate`}
+        name={'startDate'}
         type={'text'}
         value={experienceDataObj.startDate}
-        // handleValueChanged={}
+        handleValueChanged={handleExperienceInputChanged}
       />
 
       <Input
-        inputRowId={`${blockId}-endDate`}
         labelDisplay={'End Date'}
         inputId={`${blockId}-endDate`}
+        name={'endDate'}
         type={'text'}
         value={experienceDataObj.endDate}
-        // handleValueChanged={}
+        handleValueChanged={handleExperienceInputChanged}
       />
 
       <Input
-        inputRowId={`${blockId}-description`}
         labelDisplay={'Description'}
         inputId={`${blockId}-description`}
+        name={'description'}
         type={'textarea'}
         value={experienceDataObj.description}
-        // handleValueChanged={}
+        handleValueChanged={handleExperienceInputChanged}
       />
     </div>
   );

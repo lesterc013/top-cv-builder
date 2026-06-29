@@ -1,7 +1,7 @@
 export default function Input({
-  inputRowId,
   labelDisplay,
   inputId,
+  name,
   type,
   value,
   handleValueChanged,
@@ -10,11 +10,11 @@ export default function Input({
   const textareaCols = 30;
 
   return (
-    <div className='input-row' id={inputRowId}>
+    <div className='input-row'>
       <label htmlFor={inputId}>{labelDisplay}: </label>
       {type === 'textarea' ? (
         <textarea
-          name={inputId}
+          name={name}
           id={inputId}
           rows={textareaRows}
           cols={textareaCols}
@@ -23,9 +23,9 @@ export default function Input({
         ></textarea>
       ) : (
         <input
-          type={type}
+          name={name}
           id={inputId}
-          name={inputId}
+          type={type}
           autoComplete='on'
           value={value}
           onChange={(e) => handleValueChanged(e)}
