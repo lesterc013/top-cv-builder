@@ -1,18 +1,20 @@
 import EduFormBlock from './form/EduFormBlock';
 import ExpFormBlock from './form/ExpFormBlock';
 import Input from './form/Input';
+import PersonalDetailsBlock from './form/PersonalDetailsBlock';
 
-export default function Form() {
+export default function Form({
+  personalDetails,
+  handlePersonalDetailsChanged,
+}) {
   return (
     <div className='form'>
       <h1 className='form-header'>Fill In Details</h1>
 
-      <div className='personal-details'>
-        <h2>Personal Details</h2>
-        <Input label={'Name'} id={'name'} type={'text'} />
-        <Input label={'Email'} id={'email'} type={'email'} />
-        <Input label={'Tel'} id={'tel'} type={'tel'} />
-      </div>
+      <PersonalDetailsBlock
+        personalDetails={personalDetails}
+        handlePersonalDetailsChanged={handlePersonalDetailsChanged}
+      />
 
       <div className='experience'>
         <h2>Experience</h2>
