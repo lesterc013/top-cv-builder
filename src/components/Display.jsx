@@ -16,6 +16,7 @@ const testState = {
 
   experience: [
     {
+      id: '1',
       company: 'ST Engineering',
       position: 'Software Engineer',
       startDate: '2024',
@@ -23,6 +24,7 @@ const testState = {
       description: 'Build solid software',
     },
     {
+      id: '2',
       company: 'RSN',
       position: 'Naval Officer',
       startDate: '2018',
@@ -33,12 +35,14 @@ const testState = {
 
   education: [
     {
+      id: '1',
       school: 'NTU',
       title: 'Mech Eng',
       dateStarted: '2015',
       dateEnded: '2018',
     },
     {
+      id: '2',
       school: 'SP',
       title: 'Aero Eng',
       dateStarted: '2012',
@@ -49,41 +53,33 @@ const testState = {
 
 export default function Display() {
   const generalDisplay = [];
-  const experienceDisplay = [];
-  const educationDisplay = [];
 
   for (const property in testState.general) {
     const value = testState.general[property];
-    generalDisplay.push(<div>{value}</div>);
+    generalDisplay.push(<div key={value}>{value}</div>);
   }
-
-  // testState.education.forEach((eduObj) => {
-  //   for (const property in eduObj) {
-  //     const value = eduObj[property];
-  //     educationDisplay.push(<div>{value}</div>);
-  //   }
-  // });
-
-  // testState.experience.forEach((expObj) => {
-  //   for (const property in expObj) {
-  //     const value = expObj[property];
-  //     experienceDisplay.push(<div>{value}</div>);
-  //   }
-  // });
 
   return (
     <div className='display'>
       <h1>Display</h1>
-      <div className='general-display'>
+
+      <div className='general'>
         <h2>General</h2>
         {generalDisplay}
+      </div>
+
+      <div className='experience'>
         <h2>Experience</h2>
-        <TwoColumnDisplay
-          sectionName='experience'
-          data={testState.experience}
-        />
+        {testState.experience.map((dataObj) => (
+          <TwoColumnDisplay key={dataObj.id} data={dataObj} />
+        ))}
+      </div>
+
+      <div className='education'>
         <h2>Education</h2>
-        {/* {experienceDisplay} */}
+        {testState.education.map((dataObj) => (
+          <TwoColumnDisplay key={dataObj.id} data={dataObj} />
+        ))}
       </div>
     </div>
   );
