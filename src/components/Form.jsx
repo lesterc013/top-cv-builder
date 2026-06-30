@@ -6,11 +6,13 @@ export default function Form({
   personalDetails,
   handlePersonalDetailsChanged,
   experienceData,
+  educationData,
   handleInputChanged,
   addNewSectionBlock,
   removeSectionBlock,
 }) {
   const experienceSectionName = 'experienceSection';
+  const educationSectionName = 'educationSection';
 
   return (
     <div className='form'>
@@ -51,7 +53,32 @@ export default function Form({
 
       <div className='education'>
         <h2>Education</h2>
-        <EduFormBlock />
+        <button
+          type='button'
+          onClick={(e) => {
+            addNewSectionBlock(educationSectionName);
+          }}
+        >
+          Add New
+        </button>
+        {educationData.map((educationDataObj) => {
+          return (
+            <EduFormBlock
+              key={educationDataObj.id}
+              educationDataObj={educationDataObj}
+              handleInputChanged={(e) => {
+                handleInputChanged(
+                  educationSectionName,
+                  educationDataObj.id,
+                  e,
+                );
+              }}
+              removeEducationBlock={(e) => {
+                removeSectionBlock(educationSectionName, educationDataObj.id);
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );

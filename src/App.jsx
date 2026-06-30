@@ -37,9 +37,11 @@ function App() {
     experienceSection: [
       defaultSectionBlocks['experienceSection'](),
       defaultSectionBlocks['experienceSection'](),
-      defaultSectionBlocks['experienceSection'](),
     ],
-    educationSection: [],
+    educationSection: [
+      defaultSectionBlocks['educationSection'](),
+      defaultSectionBlocks['educationSection'](),
+    ],
   });
 
   // --- PERSONAL DETAILS ---
@@ -96,19 +98,13 @@ function App() {
     setCvData({ ...cvData, [sectionName]: updatedArrDataObjs });
   }
 
-  // TODO: Refactor to generic
-  function handleRemoveExperienceData(idToRemove) {
-    setExperienceData(
-      experienceData.filter((expObj) => expObj.id !== idToRemove),
-    );
-  }
-
   return (
     <div className='app'>
       <Form
         personalDetails={personalDetails}
         handlePersonalDetailsChanged={handlePersonalDetailsChanged}
         experienceData={cvData['experienceSection']}
+        educationData={cvData['educationSection']}
         handleInputChanged={handleInputChanged}
         addNewSectionBlock={addNewSectionBlock}
         removeSectionBlock={removeSectionBlock}
