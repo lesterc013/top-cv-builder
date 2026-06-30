@@ -8,10 +8,10 @@ export default function Form({
   experienceData,
   handleInputChanged,
   addNewSectionBlock,
-  // handleAddExperience,
-  // handleExperienceInputChanged,
-  handleRemoveExperienceData,
+  removeSectionBlock,
 }) {
+  const experienceSectionName = 'experienceSection';
+
   return (
     <div className='form'>
       <h1 className='form-header'>Fill In Details</h1>
@@ -26,7 +26,7 @@ export default function Form({
         <button
           type='button'
           onClick={(e) => {
-            addNewSectionBlock('experienceSection');
+            addNewSectionBlock(experienceSectionName);
           }}
         >
           Add New
@@ -36,10 +36,14 @@ export default function Form({
             key={experienceDataObj.id}
             experienceDataObj={experienceDataObj}
             handleInputChanged={(e) => {
-              handleInputChanged('experienceSection', experienceDataObj.id, e);
+              handleInputChanged(
+                experienceSectionName,
+                experienceDataObj.id,
+                e,
+              );
             }}
-            handleRemoveExperienceData={(e) => {
-              handleRemoveExperienceData(experienceDataObj.id);
+            removeExperienceBlock={(e) => {
+              removeSectionBlock(experienceSectionName, experienceDataObj.id);
             }}
           />
         ))}

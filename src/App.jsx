@@ -61,6 +61,19 @@ function App() {
     });
   }
 
+  function removeSectionBlock(sectionName, idToRemove) {
+    const arrDataObjs = cvData[sectionName];
+    if (!arrDataObjs) {
+      console.error(`${sectionName} not found in cvData`);
+      return;
+    }
+
+    const updatedArrDataObjs = arrDataObjs.filter(
+      (dataObj) => dataObj.id !== idToRemove,
+    );
+    setCvData({ ...cvData, [sectionName]: updatedArrDataObjs });
+  }
+
   // Generic input change handler for both Exp and Edu sections.
   function handleInputChanged(sectionName, idDataObj, e) {
     const arrDataObjs = cvData[sectionName];
@@ -98,7 +111,7 @@ function App() {
         experienceData={cvData['experienceSection']}
         handleInputChanged={handleInputChanged}
         addNewSectionBlock={addNewSectionBlock}
-        handleRemoveExperienceData={handleRemoveExperienceData}
+        removeSectionBlock={removeSectionBlock}
       />
       <Display />
     </div>
