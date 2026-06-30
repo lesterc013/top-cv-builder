@@ -4,50 +4,40 @@ import './App.css';
 import Display from './components/Display';
 import Form from './components/Form';
 
+const defaultSectionBlocks = {
+  experienceSection: () => {
+    return {
+      id: crypto.randomUUID(),
+      company: 'New Company',
+      position: 'New Position',
+      startDate: '2026',
+      endDate: '2026',
+      description: 'New Description',
+    };
+  },
+  educationSection: () => {
+    return {
+      id: crypto.randomUUID(),
+      school: 'Best School',
+      degree: 'Super degree',
+      startDate: '2026',
+      endDate: '2026',
+    };
+  },
+};
+
 function App() {
   const [personalDetails, setPersonalDetails] = useState({
     name: 'Lester',
     email: 'lester@email.com',
     phone: '93219818',
   });
-  // TODO: Export default experience object so we dont DRY
-  const [experienceData, setExperienceData] = useState([
-    {
-      id: crypto.randomUUID(),
-      company: 'New Company',
-      position: ' New Position',
-      startDate: '2026',
-      endDate: '2026',
-      description: 'New Description',
-    },
-    {
-      id: crypto.randomUUID(),
-      company: 'New Company',
-      position: 'Position',
-      startDate: '2026',
-      endDate: '2026',
-      description: 'Description',
-    },
-  ]);
 
   const [cvData, setCvData] = useState({
     experienceSection: [
-      {
-        id: crypto.randomUUID(),
-        company: 'New Company',
-        position: ' New Position',
-        startDate: '2026',
-        endDate: '2026',
-        description: 'New Description',
-      },
-      {
-        id: crypto.randomUUID(),
-        company: 'New Company',
-        position: 'Position',
-        startDate: '2026',
-        endDate: '2026',
-        description: 'Description',
-      },
+      defaultSectionBlocks['experienceSection'](),
+      defaultSectionBlocks['experienceSection'](),
+      defaultSectionBlocks['experienceSection'](),
     ],
     educationSection: [],
   });
@@ -61,20 +51,14 @@ function App() {
     });
   }
 
-  // --- EXPERIENCE ---
-  // TODO: Refactor to generic
-  function handleAddExperience() {
-    setExperienceData([
-      ...experienceData,
-      {
-        id: crypto.randomUUID(),
-        company: 'New Company',
-        position: 'Position',
-        startDate: '2026',
-        endDate: '2026',
-        description: 'Description',
-      },
-    ]);
+  // --- SECTION BLOCK HANDLERS ---
+  function addNewSectionBlock(sectionName) {
+    const sectionBlockFactoryFunction = defaultSectionBlocks[sectionName];
+
+    setCvData({
+      ...cvData,
+      [sectionName]: [...cvData[sectionName], sectionBlockFactoryFunction()],
+    });
   }
 
   // Generic input change handler for both Exp and Edu sections.
@@ -112,9 +96,8 @@ function App() {
         personalDetails={personalDetails}
         handlePersonalDetailsChanged={handlePersonalDetailsChanged}
         experienceData={cvData['experienceSection']}
-        // handleExperienceInputChanged={handleExperienceInputChanged}
         handleInputChanged={handleInputChanged}
-        handleAddExperience={handleAddExperience}
+        addNewSectionBlock={addNewSectionBlock}
         handleRemoveExperienceData={handleRemoveExperienceData}
       />
       <Display />
