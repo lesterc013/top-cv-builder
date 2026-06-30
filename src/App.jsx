@@ -40,19 +40,19 @@ function App() {
   }
 
   // --- EXPERIENCE ---
-  // function handleAddExperience() {
-  //   setExperienceData([
-  //     ...experienceData,
-  //     {
-  //       id: crypto.randomUUID(),
-  //       company: 'New Company',
-  //       position: 'Position',
-  //       startDate: '2026',
-  //       endDate: '2026',
-  //       description: 'Description',
-  //     },
-  //   ]);
-  // }
+  function handleAddExperience() {
+    setExperienceData([
+      ...experienceData,
+      {
+        id: crypto.randomUUID(),
+        company: 'New Company',
+        position: 'Position',
+        startDate: '2026',
+        endDate: '2026',
+        description: 'Description',
+      },
+    ]);
+  }
 
   function handleExperienceInputChanged(blockId, e) {
     const updatedExperiences = experienceData.map((expObj) => {
@@ -80,6 +80,7 @@ function App() {
         personalDetails={personalDetails}
         handlePersonalDetailsChanged={handlePersonalDetailsChanged}
         experienceData={experienceData}
+        handleAddExperience={handleAddExperience}
         handleExperienceInputChanged={handleExperienceInputChanged}
         handleRemoveExperienceData={handleRemoveExperienceData}
       />

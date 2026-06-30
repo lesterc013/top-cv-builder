@@ -6,6 +6,7 @@ export default function Form({
   personalDetails,
   handlePersonalDetailsChanged,
   experienceData,
+  handleAddExperience,
   handleExperienceInputChanged,
   handleRemoveExperienceData,
 }) {
@@ -20,6 +21,9 @@ export default function Form({
 
       <div className='experience'>
         <h2>Experience</h2>
+        <button type='button' onClick={handleAddExperience}>
+          Add New
+        </button>
         {experienceData.map((experienceDataObj) => (
           <ExpFormBlock
             key={experienceDataObj.id}
