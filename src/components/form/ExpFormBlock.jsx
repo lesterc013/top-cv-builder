@@ -2,7 +2,7 @@ import Input from './Input';
 
 export default function ExpFormBlock({
   experienceDataObj,
-  handleExperienceInputChanged,
+  handleInputChanged,
   handleRemoveExperienceData,
 }) {
   const blockId = experienceDataObj.id;
@@ -15,7 +15,7 @@ export default function ExpFormBlock({
         name={'company'}
         type={'text'}
         value={experienceDataObj.company}
-        handleValueChanged={handleExperienceInputChanged}
+        handleValueChanged={handleInputChanged}
       />
 
       <Input
@@ -24,7 +24,7 @@ export default function ExpFormBlock({
         name={'position'}
         type={'text'}
         value={experienceDataObj.position}
-        handleValueChanged={handleExperienceInputChanged}
+        handleValueChanged={handleInputChanged}
       />
 
       <Input
@@ -33,7 +33,7 @@ export default function ExpFormBlock({
         name={'startDate'}
         type={'text'}
         value={experienceDataObj.startDate}
-        handleValueChanged={handleExperienceInputChanged}
+        handleValueChanged={handleInputChanged}
       />
 
       <Input
@@ -42,7 +42,7 @@ export default function ExpFormBlock({
         name={'endDate'}
         type={'text'}
         value={experienceDataObj.endDate}
-        handleValueChanged={handleExperienceInputChanged}
+        handleValueChanged={handleInputChanged}
       />
 
       <Input
@@ -51,7 +51,7 @@ export default function ExpFormBlock({
         name={'description'}
         type={'textarea'}
         value={experienceDataObj.description}
-        handleValueChanged={handleExperienceInputChanged}
+        handleValueChanged={handleInputChanged}
       />
 
       <button type='button' onClick={handleRemoveExperienceData}>

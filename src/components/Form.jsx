@@ -6,8 +6,9 @@ export default function Form({
   personalDetails,
   handlePersonalDetailsChanged,
   experienceData,
+  handleInputChanged,
   handleAddExperience,
-  handleExperienceInputChanged,
+  // handleExperienceInputChanged,
   handleRemoveExperienceData,
 }) {
   return (
@@ -28,11 +29,9 @@ export default function Form({
           <ExpFormBlock
             key={experienceDataObj.id}
             experienceDataObj={experienceDataObj}
-            // LEARNING MOMENT: Close over info that the handler should keep - in this case, I provide each handler with the corresponding experienceDataObj.id so that when its called in future they know which experienceDataObj its for.
-            // So now, we have create a single arg wrapper over the original handler from App.jsx that has closed over the id so the downwards onChange that only passes in 1 argument will work.
-            handleExperienceInputChanged={(e) =>
-              handleExperienceInputChanged(experienceDataObj.id, e)
-            }
+            handleInputChanged={(e) => {
+              handleInputChanged('experienceSection', experienceDataObj.id, e);
+            }}
             handleRemoveExperienceData={(e) => {
               handleRemoveExperienceData(experienceDataObj.id);
             }}
