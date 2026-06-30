@@ -1,8 +1,3 @@
-// If Display is provided with all the form data,
-// Then does it even need an extra Section?
-// Just set the section title h2,
-// then use map to render an array of divs with the value
-
 import TwoColumnDisplay from './display/TwoColumnDisplay';
 
 export default function Display({
