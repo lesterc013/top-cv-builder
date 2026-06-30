@@ -8,34 +8,31 @@ export default function PersonalDetailsBlock({
     <div className='personal-details'>
       <h2>Personal Details</h2>
 
-      <label htmlFor='name'>Name: </label>
-      <input
-        type='text'
-        id='name'
-        name='name'
-        autoComplete='on'
+      <Input
+        labelDisplay={'Name'}
+        inputId={'name'}
+        name={'name'}
+        type={'text'}
         value={personalDetails.name}
-        onChange={(e) => handlePersonalDetailsChanged(e)}
+        handleValueChanged={handlePersonalDetailsChanged}
       />
 
-      <label htmlFor='email'>Email: </label>
-      <input
-        type='text'
-        id='email'
-        name='email'
-        autoComplete='on'
+      <Input
+        labelDisplay={'Email'}
+        inputId={'email'}
+        name={'email'}
+        type={'text'}
         value={personalDetails.email}
-        onChange={(e) => handlePersonalDetailsChanged(e)}
+        handleValueChanged={handlePersonalDetailsChanged}
       />
 
-      <label htmlFor='phone'>Phone: </label>
-      <input
-        type='tel'
-        id='phone'
-        name='phone'
-        autoComplete='on'
+      <Input
+        labelDisplay={'Phone'}
+        inputId={'phone'}
+        name={'phone'}
+        type={'tel'}
         value={personalDetails.phone}
-        onChange={(e) => handlePersonalDetailsChanged(e)}
+        handleValueChanged={handlePersonalDetailsChanged}
       />
     </div>
   );
