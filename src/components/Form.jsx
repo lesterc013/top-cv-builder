@@ -7,6 +7,7 @@ export default function Form({
   handlePersonalDetailsChanged,
   experienceData,
   handleExperienceInputChanged,
+  handleRemoveExperienceData,
 }) {
   return (
     <div className='form'>
@@ -28,6 +29,9 @@ export default function Form({
             handleExperienceInputChanged={(e) =>
               handleExperienceInputChanged(experienceDataObj.id, e)
             }
+            handleRemoveExperienceData={(e) => {
+              handleRemoveExperienceData(experienceDataObj.id);
+            }}
           />
         ))}
       </div>

@@ -68,6 +68,12 @@ function App() {
     setExperienceData(updatedExperiences);
   }
 
+  function handleRemoveExperienceData(idToRemove) {
+    setExperienceData(
+      experienceData.filter((expObj) => expObj.id !== idToRemove),
+    );
+  }
+
   return (
     <div className='app'>
       <Form
@@ -75,6 +81,7 @@ function App() {
         handlePersonalDetailsChanged={handlePersonalDetailsChanged}
         experienceData={experienceData}
         handleExperienceInputChanged={handleExperienceInputChanged}
+        handleRemoveExperienceData={handleRemoveExperienceData}
       />
       <Display />
     </div>

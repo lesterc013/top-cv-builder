@@ -3,6 +3,7 @@ import Input from './Input';
 export default function ExpFormBlock({
   experienceDataObj,
   handleExperienceInputChanged,
+  handleRemoveExperienceData,
 }) {
   const blockId = experienceDataObj.id;
 
@@ -52,6 +53,10 @@ export default function ExpFormBlock({
         value={experienceDataObj.description}
         handleValueChanged={handleExperienceInputChanged}
       />
+
+      <button type='button' onClick={handleRemoveExperienceData}>
+        Remove
+      </button>
     </div>
   );
 }
