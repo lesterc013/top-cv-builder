@@ -109,7 +109,11 @@ function App() {
         addNewSectionBlock={addNewSectionBlock}
         removeSectionBlock={removeSectionBlock}
       />
-      <Display />
+      <Display
+        personalDetails={personalDetails}
+        experienceData={cvData['experienceSection']}
+        educationData={cvData['educationSection']}
+      />
     </div>
   );
 }
